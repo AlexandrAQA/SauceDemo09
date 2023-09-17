@@ -17,13 +17,17 @@ public class LoginPage extends BasePage{
   private final By ERROR_MESSAGE = By.cssSelector("h3[data-test=error]");
 
   public void open(){
-    driver.get("https://www.saucedemo.com/");
+    driver.get(SAUCE_DEMO_URL);
   }
 
   public void login(String user,String password) {
     driver.findElement(USERNAME_INPUT).sendKeys(user);
     driver.findElement(PASSWORD_INPUT).sendKeys(password);
     driver.findElement(LOGIN_BUTTON).submit();
+  }
+
+  public void loginAsValidUser () {
+    login("standard_user", "secret_sauce");
   }
 
   public String getError(){
