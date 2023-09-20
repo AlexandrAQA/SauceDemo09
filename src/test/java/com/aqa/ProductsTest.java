@@ -9,7 +9,13 @@ public class ProductsTest extends BaseTest {
         loginPage.open();
         loginPage.loginAsValidUser();
         productsPage.open();
-        productsPage.addToCart("Sauce Labs Backpack");
+
+        final String SAUCE_LABS_BACKPACK = "Sauce Labs Backpack";
+        final String LABS_BOLT_T_SHIRT = "Sauce Labs Bolt T-Shirt";
+
+        productsPage.addToCart(SAUCE_LABS_BACKPACK);
+        productsPage.addToCart(LABS_BOLT_T_SHIRT);
+        cartPage.removeProductFromCart(LABS_BOLT_T_SHIRT);
 
     }
 }
