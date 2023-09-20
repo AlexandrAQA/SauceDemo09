@@ -3,6 +3,8 @@ package com.aqa;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.pages.CartPage;
+import org.pages.HeaderPage;
 import org.pages.LoginPage;
 import org.pages.ProductsPage;
 import org.testng.annotations.AfterMethod;
@@ -15,6 +17,8 @@ public class BaseTest {
     WebDriver driver;
     LoginPage loginPage;
     ProductsPage productsPage;
+    HeaderPage headerPage;
+    CartPage cartPage;
 
     @BeforeMethod
     public void setUp() {
@@ -28,6 +32,8 @@ public class BaseTest {
 
         loginPage = new LoginPage(driver);
         productsPage = new ProductsPage(driver);
+        headerPage = new HeaderPage(driver);
+        cartPage = new CartPage(driver);
     }
 
     @AfterMethod(alwaysRun = true)
