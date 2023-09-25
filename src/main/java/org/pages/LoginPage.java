@@ -1,36 +1,44 @@
 package org.pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
-public class LoginPage extends BasePage{
+public class LoginPage extends BasePage {
 
+    public LoginPage(WebDriver driver) {
+        super(driver);
+        PageFactory.initElements(driver, this);
+    }
 
+    @FindBy(id = "user-name")
+    private WebElement usernameInput;
 
-  public LoginPage(WebDriver driver) {
-    super(driver);
-  }
+    @FindBy(id = "password")
+    private WebElement passwordInput;
 
-  private final By USERNAME_INPUT = By.id("user-name");
-  private final By PASSWORD_INPUT = By.id("password");
-  private final By LOGIN_BUTTON = By.id("login-button");
-  private final By ERROR_MESSAGE = By.cssSelector("h3[data-test=error]");
+    @FindBy(id = "login-button")
+    private WebElement loginButton;
 
-  public void open(){
-    driver.get(SAUCE_DEMO_URL);
-  }
+    @FindBy(css = "h3[data-test=error]")
+    private WebElement errorMessage;
 
-  public void login(String user,String password) {
-    driver.findElement(USERNAME_INPUT).sendKeys(user);
-    driver.findElement(PASSWORD_INPUT).sendKeys(password);
-    driver.findElement(LOGIN_BUTTON).submit();
-  }
+    public void open() {
+        driver.get(SAUCE_DEMO_URL);
+    }
 
-  public void loginAsValidUser () {
-    login("standard_user", "secret_sauce");
-  }
+    public void login(String user, String password) {
+        usernameInput.sendKeys(user);
+        passwordInput.sendKeys(password);
+        loginButton.submit();
+    }
 
-  public String getError(){
-    return driver.findElement(ERROR_MESSAGE).getText();
-  }
+    public void loginAsValidUser() {
+        login("standard_user", "secret_sauce");
+    }
+
+    public String getError() {
+        return errorMessage.getText();
+    }
 }
