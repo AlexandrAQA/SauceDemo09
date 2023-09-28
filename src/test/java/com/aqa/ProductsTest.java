@@ -11,8 +11,7 @@ public class ProductsTest extends BaseTest {
 
     @Test
     public void productsShouldBeAddedToCart() {
-        loginPage.open();
-        loginPage.loginAsValidUser();
+        loginSteps.loginAsStandardUser();
 
         final String SAUCE_LABS_BACKPACK = "Sauce Labs Backpack";
         final String SAUCE_LABS_ONESIE = "Sauce Labs Onesie";
