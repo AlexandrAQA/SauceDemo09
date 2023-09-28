@@ -7,6 +7,7 @@ import org.pages.CartPage;
 import org.pages.HeaderPage;
 import org.pages.LoginPage;
 import org.pages.ProductsPage;
+import org.steps.LoginSteps;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
@@ -19,6 +20,7 @@ public class BaseTest {
     ProductsPage productsPage;
     HeaderPage headerPage;
     CartPage cartPage;
+    LoginSteps loginSteps;
 
     @BeforeMethod
     public void setUp() {
@@ -34,6 +36,8 @@ public class BaseTest {
         productsPage = new ProductsPage(driver);
         headerPage = new HeaderPage(driver);
         cartPage = new CartPage(driver);
+        loginSteps = new LoginSteps(driver);
+
     }
 
     @AfterMethod(alwaysRun = true)
